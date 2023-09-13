@@ -1,7 +1,7 @@
 function PageShop() {
     return (
         <main className="pageShop">
-            <h2>Shop</h2>
+            <h1>Shop</h1>
         </main>
     )
 }
