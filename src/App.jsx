@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import NavBar from './NavBar'
-import PageHome from './PageHome'
-import PageShop from './PageShop'
+import NavBar from './components/NavBar'
+import PageHome from './components/PageHome'
+import PageShop from './components/PageShop'
+import "./styles/reset.css"
+import "./styles/styles.css"
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <header>Header</header>
       <RouterProvider router={router} />
       <footer>Footer</footer>
     </>

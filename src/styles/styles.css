@@ -1,0 +1,31 @@
+#root {
+    background-color: rgb(228, 228, 228);
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#root > * {
+    border: 1px solid black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.pageHome {
+    background-color: rgb(250, 182, 182);
+}
+
+.pageShop {
+    background-color: rgb(193, 217, 253);  
+}
