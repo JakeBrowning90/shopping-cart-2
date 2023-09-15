@@ -23,9 +23,13 @@ main {
 }
 
 .pageHome {
-    background-color: rgb(250, 182, 182);
+    background-color: rgb(182, 250, 201);
 }
 
 .pageShop {
     background-color: rgb(193, 217, 253);  
+}
+
+.pageError {
+    background-color: rgb(250, 182, 182);
 }

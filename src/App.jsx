@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NavBar from './components/NavBar'
+import PageError from './components/PageError'
 import PageHome from './components/PageHome'
 import PageShop from './components/PageShop'
 import "./styles/reset.css"
@@ -11,8 +12,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <NavBar />,
     children: [
-      {path:"/", element: <PageHome />},
-      {path:"/shop", element: <PageShop />},
+      {
+        path:"", 
+        element: <PageHome />,
+      },
+      {
+        path:"/shop", 
+        element: <PageShop />
+      },
     ]
   },
 ])
