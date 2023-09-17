@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <footer>Footer</footer>
+      <footer>Made by Jake Browning for The Odin Project, 2023.</footer>
     </>
   )
 }
