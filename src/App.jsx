@@ -7,6 +7,8 @@ import PageShop from './components/PageShop'
 import "./styles/reset.css"
 import "./styles/styles.css"
 
+//TODO - Make router a separate module
+//TODO - Move cartCount state higher to prevent reset to 0
 const router = createBrowserRouter([
   {
     path: "/",
