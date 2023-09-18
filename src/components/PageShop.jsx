@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-function PageShop() {
+function PageShop({cartTotal, addToCart}) {
 
-    const [cartTotal, setCartTotal] = useState(0);
-    const addToCart = () => {
-        setCartTotal(cartTotal => cartTotal + 1)
-    }
+    // const [cartTotal, setCartTotal] = useState(0);
+    // const addToCart = () => {
+    //     setCartTotal(cartTotal => cartTotal + 1)
+    // }
 
     return (
         <main className="pageShop">
