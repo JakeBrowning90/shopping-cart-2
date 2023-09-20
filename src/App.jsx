@@ -10,30 +10,31 @@ import "./styles/styles.css"
 //TODO - Make router a separate module
 //TODO - Move cartCount state higher to prevent reset to 0
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <NavBar />,
-    errorElement: <PageError />,
-    children: [
-      {
-        path:"", 
-        element: <PageHome />,
-      },
-      {
-        path:"/shop", 
-        element: <PageShop />
-      },
-    ]
-  },
-])
-
 function App() {
 
   const [cartTotal, setCartTotal] = useState(0);
   const addToCart = () => {
       setCartTotal(cartTotal => cartTotal + 1)
   }
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <NavBar cartTotal={cartTotal}/>,
+      errorElement: <PageError />,
+      children: [
+        {
+          path:"", 
+          element: <PageHome />,
+        },
+        {
+          path:"/shop", 
+          element: <PageShop addToCart={addToCart}/>
+        },
+      ]
+    },
+  ])
+
   return (
     <>
       <RouterProvider router={router} cartTotal={cartTotal} addToCart={addToCart}/>
