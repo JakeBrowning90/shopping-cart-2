@@ -14,6 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <NavBar />,
+    errorElement: <PageError />,
     children: [
       {
         path:"", 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/shop", 
-        element: <PageShop cartTotal={cartTotal}/>
+        element: <PageShop />
       },
     ]
   },
@@ -29,9 +30,13 @@ const router = createBrowserRouter([
 
 function App() {
 
+  const [cartTotal, setCartTotal] = useState(0);
+  const addToCart = () => {
+      setCartTotal(cartTotal => cartTotal + 1)
+  }
   return (
     <>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} cartTotal={cartTotal} addToCart={addToCart}/>
       <footer>Made by Jake Browning for The Odin Project, 2023.</footer>
     </>
   )
