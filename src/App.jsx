@@ -13,8 +13,9 @@ import "./styles/styles.css"
 function App() {
 
   const [cartTotal, setCartTotal] = useState(0);
-  const addToCart = () => {
-      setCartTotal(cartTotal => cartTotal + 1)
+  const addToCart = (e) => {
+      const qtyToAdd = e.target.dataset.key;
+      setCartTotal(cartTotal => cartTotal + qtyToAdd)
   }
 
   const router = createBrowserRouter([
