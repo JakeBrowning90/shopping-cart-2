@@ -14,9 +14,15 @@ function App() {
 
   const [cartTotal, setCartTotal] = useState(0);
   const addToCart = (e) => {
-      const qtyToAdd = e.target.dataset.key;
-      setCartTotal(cartTotal => cartTotal + qtyToAdd)
+      const qtyToAdd = parseFloat(e.target.dataset.key);
+      setCartTotal(cartTotal => cartTotal + qtyToAdd);
   }
+
+  const testInventory = [
+    {productName: "eggs", qtyOnAdd: 12},
+    {productName: "burgers", qtyOnAdd: 6},
+    {productName: "buns", qtyOnAdd: 8},
+  ]
 
   const router = createBrowserRouter([
     {
@@ -30,7 +36,7 @@ function App() {
         },
         {
           path:"/shop", 
-          element: <PageShop addToCart={addToCart}/>
+          element: <PageShop addToCart={addToCart} inventory={testInventory}/>
         },
       ]
     },
