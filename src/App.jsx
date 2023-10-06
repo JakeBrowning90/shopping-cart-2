@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid';
 import NavBar from './components/NavBar'
 import PageError from './components/PageError'
 import PageHome from './components/PageHome'
@@ -18,11 +19,30 @@ function App() {
       setCartTotal(cartTotal => cartTotal + qtyToAdd);
   }
 
+
   const testInventory = [
-    {productName: "eggs", qtyOnAdd: 12},
-    {productName: "burgers", qtyOnAdd: 6},
-    {productName: "buns", qtyOnAdd: 8},
+    {key: uuidv4(), productName: "eggs", cardCount: 0},
+    {key: uuidv4(), productName: "burgers", cardCount: 0},
+    {key: uuidv4(), productName: "buns", cardCount: 0},
   ]
+
+  const [inventory, setInventory] = useState( testInventory );
+
+  const handleQtyChange = (e) => {
+    console.log(e.target.dataset.key);
+    const targetItem = inventory.find(item => item.key === e.target.dataset.key);
+    const value = parseFloat(e.target.value);
+    console.log(targetItem);
+    setInventory(inventory.map(item => {
+      if (item.key === targetItem.key) {
+        // Create a *new* object with changes
+        return { ...item, cardCount: value };
+      } else {
+        // No changes
+        return item;
+      }
+    }));
+  }
 
   const router = createBrowserRouter([
     {
@@ -36,7 +56,7 @@ function App() {
         },
         {
           path:"/shop", 
-          element: <PageShop addToCart={addToCart} inventory={testInventory}/>
+          element: <PageShop handleQtyChange={handleQtyChange} addToCart={addToCart} inventory={testInventory}/>
         },
       ]
     },
