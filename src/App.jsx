@@ -14,11 +14,22 @@ import "./styles/styles.css"
 function App() {
 
   const [cartTotal, setCartTotal] = useState(0);
-  const addToCart = (e) => {
-      const qtyToAdd = parseFloat(e.target.dataset.key);
-      setCartTotal(cartTotal => cartTotal + qtyToAdd);
-  }
 
+  const addToCart = (e) => {
+      // const qtyToAdd = 1;
+      const targetItem = inventory.find(item => item.key === e.target.dataset.key);
+      setCartTotal(cartTotal => cartTotal + targetItem.cardCount);
+
+      setInventory(inventory.map(item => {
+        if (item.key === targetItem.key) {
+          // Create a *new* object with changes
+          return { ...item, cardCount: 0 };
+        } else {
+          // No changes
+          return item;
+        }
+      }));
+  }
 
   const testInventory = [
     {key: uuidv4(), productName: "eggs", cardCount: 0},
@@ -29,10 +40,12 @@ function App() {
   const [inventory, setInventory] = useState( testInventory );
 
   const handleQtyChange = (e) => {
-    console.log(e.target.dataset.key);
+    // console.log(e.target.dataset.key);
     const targetItem = inventory.find(item => item.key === e.target.dataset.key);
+    // console.log(targetItem);
     const value = parseFloat(e.target.value);
-    console.log(targetItem);
+    // console.log(value);
+ 
     setInventory(inventory.map(item => {
       if (item.key === targetItem.key) {
         // Create a *new* object with changes
@@ -56,7 +69,7 @@ function App() {
         },
         {
           path:"/shop", 
-          element: <PageShop handleQtyChange={handleQtyChange} addToCart={addToCart} inventory={testInventory}/>
+          element: <PageShop handleQtyChange={handleQtyChange} addToCart={addToCart} inventory={inventory}/>
         },
       ]
     },
