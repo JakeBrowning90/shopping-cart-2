@@ -1,7 +1,9 @@
 function ItemCard({item, handleQtyChange, addToCart}) {
     return (
-        <div>
-            <h2>{item.productName}</h2>
+        <div className="itemCard">
+            <img className="itemImage" src="" alt="product image" />
+            <h2 className="itemName">{item.productName}</h2>
+            <h2>${item.price}</h2>
             <input 
                 name="cardCount" 
                 type="number" 
@@ -12,7 +14,7 @@ function ItemCard({item, handleQtyChange, addToCart}) {
                 value={item.cardCount}
                 placeholder="0 - 99"
             />
-            <button data-key={item.key} onClick={addToCart}>Add to Cart</button> 
+            <button className="addButton" data-key={item.key} onClick={addToCart}>Add to Cart</button> 
         </div>
     )
 }

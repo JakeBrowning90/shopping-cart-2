@@ -2,8 +2,7 @@ import ItemCard from "./ItemCard";
 
 function PageShop({handleQtyChange, addToCart, inventory}) {
     return (
-        <main className="pageShop">
-            <h1>Shop</h1>
+        // <main className="pageShop">
             <ul>
                 {inventory.map((item) => {
                     return <li key={item.key}>
@@ -11,7 +10,7 @@ function PageShop({handleQtyChange, addToCart, inventory}) {
                     </li>
                 })}
             </ul>
-        </main>
+        // </main>
     )
 }
 

@@ -11,13 +11,18 @@ function NavBar({cartTotal}) {
     return (
         <>
             <header>
-                <h1>Shop Logo</h1>
                 <nav>
+                    <h1>Logo</h1>
                     <Link to="">Home</Link>
                     <Link to="/shop">Shop</Link>
                 </nav>
-            <h2>Items in Cart: {cartTotal} </h2>
+                <button>Cart: {cartTotal} items</button>
+                {/* <div className="headerCartRow"> 
+                    <h2>Items in Cart: {cartTotal} </h2> 
+                    <button>Cart: {cartTotal} items</button> 
+                </div> */}
             </header>
+            
             <Outlet />
         </>
     )

@@ -1,21 +1,56 @@
+body {
+    background-color: rgb(239, 239, 239);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #root {
-    background-color: rgb(228, 228, 228);
+    /* background-color: rgb(192, 179, 179); */
     height: 100vh;
     box-sizing: border-box;
-    padding: 10px;
     gap: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* max-width: 1000px; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #root > * {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    /* max-width: 1000px; */
+    /* margin: auto; */
+    box-sizing: border-box;
 }
 
 header {
+    background-color: white;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    ;
+    height: 100px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+}
+
+footer {
+    background-color: rgb(182, 244, 182);
+    height: 50px;
+} 
+
+nav {
+    background-color: rgb(182, 244, 182);
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+}
+
+.headerCartRow {
+    background-color: rgb(182, 244, 182);
+    /* display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 10px; */
 }
 
 main {
@@ -23,13 +58,65 @@ main {
 }
 
 .pageHome {
-    background-color: rgb(182, 250, 201);
+    background-color: rgb(119, 220, 243);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.greetingDiv {
+    background-color: rgb(212, 247, 255);
+    height: 50%;
+    width: 50%;
 }
 
 .pageShop {
-    background-color: rgb(193, 217, 253);  
+    background-color: rgb(221, 243, 182); 
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
 }
 
 .pageError {
     background-color: rgb(250, 182, 182);
 }
+
+ul {
+    background-color: rgb(220, 220, 220);
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 1px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    overflow: auto;
+}
+
+.itemCard {
+    background-color: white;
+    /* border: 1px solid rgb(185, 185, 185); */
+    height: 300px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 3fr 1fr 1fr 1fr;
+}
+
+.itemImage, .itemName, .addButton {
+    grid-column: 1/-1;
+    align-self: auto;
+    justify-self: center;
+    margin: auto;
+}
+
+.itemName {
+    font-weight: bold;
+}
+
+.addButton {
+    background-color: orange;
+}
+

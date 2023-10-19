@@ -32,9 +32,18 @@ function App() {
   }
 
   const testInventory = [
-    {key: uuidv4(), productName: "eggs", cardCount: 0},
-    {key: uuidv4(), productName: "burgers", cardCount: 0},
-    {key: uuidv4(), productName: "buns", cardCount: 0},
+    {key: uuidv4(), productName: "apple", price: 5.00, cardCount: 0},
+    {key: uuidv4(), productName: "banana", price: 10.00, cardCount: 0},
+    {key: uuidv4(), productName: "cherry", price: 15.00, cardCount: 0},
+    {key: uuidv4(), productName: "durian", price: 20.00, cardCount: 0},
+    {key: uuidv4(), productName: "eggplant", price: 25.00, cardCount: 0},
+    {key: uuidv4(), productName: "fig", price: 30.00, cardCount: 0},
+    {key: uuidv4(), productName: "grape", price: 35.00, cardCount: 0},
+    {key: uuidv4(), productName: "hot sauce", price: 40.00, cardCount: 0},
+    {key: uuidv4(), productName: "ice cream", price: 45.00, cardCount: 0},
+    {key: uuidv4(), productName: "jam", price: 50.00, cardCount: 0},
+    {key: uuidv4(), productName: "kale", price: 55.00, cardCount: 0},
+    {key: uuidv4(), productName: "lemons", price: 60.00, cardCount: 0},
   ]
 
   const [inventory, setInventory] = useState( testInventory );
