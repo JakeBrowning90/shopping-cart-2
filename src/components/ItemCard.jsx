@@ -1,9 +1,9 @@
 function ItemCard({item, handleQtyChange, addToCart}) {
     return (
         <div className="itemCard">
-            <img className="itemImage" src="" alt="product image" />
+            <img className="itemImage" src={item.productImg} alt="product image" />
             <h2 className="itemName">{item.productName}</h2>
-            <h2>${item.price}</h2>
+            <h2 className="itemPrice">${item.price.toFixed(2)}</h2>
             <input 
                 name="cardCount" 
                 type="number" 

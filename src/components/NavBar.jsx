@@ -17,10 +17,6 @@ function NavBar({cartTotal}) {
                     <Link to="/shop">Shop</Link>
                 </nav>
                 <button>Cart: {cartTotal} items</button>
-                {/* <div className="headerCartRow"> 
-                    <h2>Items in Cart: {cartTotal} </h2> 
-                    <button>Cart: {cartTotal} items</button> 
-                </div> */}
             </header>
             
             <Outlet />
