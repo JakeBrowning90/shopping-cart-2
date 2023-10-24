@@ -105,6 +105,7 @@ ul {
 .itemImage {
     justify-self: center;
     align-self: auto;
+    height: 100px;
 }
 
 .itemName,

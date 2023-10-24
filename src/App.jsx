@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 import NavBar from './components/NavBar'
@@ -16,8 +16,11 @@ function App() {
 
   const [cartTotal, setCartTotal] = useState(0);
 
+  // const [inventory, setInventory] = useState( testInventory );
+  const [apiData, setApiData] = useState([])
+  const [inventory, setInventory] = useState([]);
+
   const addToCart = (e) => {
-      // const qtyToAdd = 1;
       const targetItem = inventory.find(item => item.key === e.target.dataset.key);
       setCartTotal(cartTotal => cartTotal + targetItem.cardCount);
 
@@ -33,21 +36,34 @@ function App() {
   }
 
   const testInventory = [
-    {key: uuidv4(), productName: "product1", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product2", productImg: testPic, price: 10.00, cardCount: 0},
-    {key: uuidv4(), productName: "product3", productImg: testPic, price: 15.25, cardCount: 0},
-    {key: uuidv4(), productName: "product4", productImg: testPic, price: 20.00, cardCount: 0},
-    {key: uuidv4(), productName: "product5", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product6", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product7", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product8", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product9", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product10", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product11", productImg: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), productName: "product12", productImg: testPic, price: 5.00, cardCount: 0},
+    {key: uuidv4(), title: "product1", image: testPic, price: 5.00, cardCount: 0},
+    {key: uuidv4(), title: "product2", image: testPic, price: 5.00, cardCount: 0},
+    {key: uuidv4(), title: "product3", image: testPic, price: 5.00, cardCount: 0},
+    {key: uuidv4(), title: "product4", image: testPic, price: 5.00, cardCount: 0},
+    {key: uuidv4(), title: "product5", image: testPic, price: 5.00, cardCount: 0},
+    {key: uuidv4(), title: "product6", image: testPic, price: 5.00, cardCount: 0},
   ]
 
-  const [inventory, setInventory] = useState( testInventory );
+  useEffect(() => {
+    const getAPI = async () => {
+      let response = await fetch('https://fakestoreapi.com/products?limit=20')
+      let data = await response.json();
+      console.log(data);
+      // setApiData(data);
+      data.forEach((item, i) => {
+        setInventory((inventory) => [...inventory, {key: uuidv4(), title: item.title, image: item.image, price: item.price, cardCount: 0}])
+      })
+    }
+    getAPI();
+  }, [])
+
+  // const getAPI = async () => {
+  //   let response = await fetch('https://fakestoreapi.com/products?limit=10')
+  //   let data = await response.json();
+  //   // .then(res=>res.json())
+  //   // .then(json=>console.log(json))
+  //   setApiData(data);
+  // }
 
   const handleQtyChange = (e) => {
     // console.log(e.target.dataset.key);
