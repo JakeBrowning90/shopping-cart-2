@@ -6,7 +6,11 @@ function PageShop({handleQtyChange, addToCart, inventory}) {
             <ul>
                 {inventory.map((item) => {
                     return <li key={item.key}>
-                        <ItemCard item={item} handleQtyChange={handleQtyChange} addToCart={addToCart}/>
+                        <ItemCard 
+                            item={item} 
+                            handleQtyChange={handleQtyChange} 
+                            addToCart={addToCart}
+                        />
                     </li>
                 })}
             </ul>

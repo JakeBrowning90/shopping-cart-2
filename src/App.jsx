@@ -9,46 +9,14 @@ import "./styles/reset.css"
 import "./styles/styles.css"
 
 function App() {
-  const [cartTotal, setCartTotal] = useState(0);
   const [apiData, setApiData] = useState([])
+  const [cartTotal, setCartTotal] = useState(0);
   const [inventory, setInventory] = useState([]);
 
-  const addToCart = (e) => {
-      const targetItem = inventory.find(item => item.key === e.target.dataset.key);
-      setCartTotal(cartTotal => cartTotal + targetItem.cardCount);
-
-      setInventory(inventory.map(item => {
-        if (item.key === targetItem.key) {
-          // Create a *new* object with changes
-          return { ...item, cardCount: 0 };
-        } else {
-          // No changes
-          return item;
-        }
-      }));
-  }
-
-  const displayCart = () => {
-    alert("You have " + cartTotal + " items in your cart!")
-  }
-
-  useEffect(() => {
-    const getAPI = async () => {
-      let response = await fetch('https://fakestoreapi.com/products?limit=20')
-      let data = await response.json();
-      console.log(data);
-      // setApiData(data);
-      data.forEach((item, i) => {
-        setInventory((inventory) => [...inventory, {key: uuidv4(), title: item.title, image: item.image, price: item.price, cardCount: 0}])
-      })
-    }
-    getAPI();
-  }, [])
-
+  // Update item's cardCount to match value in input
   const handleQtyChange = (e) => {
     const targetItem = inventory.find(item => item.key === e.target.dataset.key);
     const value = parseFloat(e.target.value);
-
     setInventory(inventory.map(item => {
       if (item.key === targetItem.key) {
         // Create a *new* object with changes
@@ -60,6 +28,40 @@ function App() {
     }));
   }
 
+  // Update cartTotal with value from and reset input to zero
+  const addToCart = (e) => {
+      const targetItem = inventory.find(item => item.key === e.target.dataset.key);
+      setCartTotal(cartTotal => cartTotal + targetItem.cardCount);
+      // Refresh inventory with target object's cardCount set to zero
+      setInventory(inventory.map(item => {
+        if (item.key === targetItem.key) {
+          // Create a *new* object with changes
+          return { ...item, cardCount: 0 };
+        } else {
+          // No changes
+          return item;
+        }
+      }));
+  }
+
+  // Placeholder for Cart button functionality
+  const displayCart = () => {
+    alert("You have " + cartTotal + " items in your cart!")
+  }
+
+  // Get store items for API on page mount, pass to inventory array with keys and cardCount
+  useEffect(() => {
+    const getAPI = async () => {
+      let response = await fetch('https://fakestoreapi.com/products?limit=20')
+      let data = await response.json();
+      data.forEach((item, i) => {
+        setInventory((inventory) => [...inventory, {key: uuidv4(), title: item.title, image: item.image, price: item.price, cardCount: 0}])
+      })
+    }
+    getAPI();
+  }, [])
+
+  // Router component containing NavBar, Error page, and paths to Home and Shop
   const router = createBrowserRouter([
     {
       path: "/",
