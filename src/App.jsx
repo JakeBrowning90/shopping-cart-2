@@ -13,10 +13,8 @@ import testPic from './components/img/roseRed.png'
 //TODO - Move cartCount state higher to prevent reset to 0
 
 function App() {
-
-  const [cartTotal, setCartTotal] = useState(0);
-
   // const [inventory, setInventory] = useState( testInventory );
+  const [cartTotal, setCartTotal] = useState(0);
   const [apiData, setApiData] = useState([])
   const [inventory, setInventory] = useState([]);
 
@@ -35,14 +33,18 @@ function App() {
       }));
   }
 
-  const testInventory = [
-    {key: uuidv4(), title: "product1", image: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), title: "product2", image: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), title: "product3", image: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), title: "product4", image: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), title: "product5", image: testPic, price: 5.00, cardCount: 0},
-    {key: uuidv4(), title: "product6", image: testPic, price: 5.00, cardCount: 0},
-  ]
+  const displayCart = () => {
+    alert("You have " + cartTotal + " items in your cart!")
+  }
+
+  // const testInventory = [
+  //   {key: uuidv4(), title: "product1", image: testPic, price: 5.00, cardCount: 0},
+  //   {key: uuidv4(), title: "product2", image: testPic, price: 5.00, cardCount: 0},
+  //   {key: uuidv4(), title: "product3", image: testPic, price: 5.00, cardCount: 0},
+  //   {key: uuidv4(), title: "product4", image: testPic, price: 5.00, cardCount: 0},
+  //   {key: uuidv4(), title: "product5", image: testPic, price: 5.00, cardCount: 0},
+  //   {key: uuidv4(), title: "product6", image: testPic, price: 5.00, cardCount: 0},
+  // ]
 
   useEffect(() => {
     const getAPI = async () => {
@@ -75,7 +77,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <NavBar cartTotal={cartTotal}/>,
+      element: <NavBar cartTotal={cartTotal} displayCart={displayCart}/>,
       errorElement: <PageError />,
       children: [
         {
