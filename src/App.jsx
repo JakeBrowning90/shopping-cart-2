@@ -7,13 +7,8 @@ import PageHome from './components/PageHome'
 import PageShop from './components/PageShop'
 import "./styles/reset.css"
 import "./styles/styles.css"
-import testPic from './components/img/roseRed.png'
-
-//TODO - Make router a separate module
-//TODO - Move cartCount state higher to prevent reset to 0
 
 function App() {
-  // const [inventory, setInventory] = useState( testInventory );
   const [cartTotal, setCartTotal] = useState(0);
   const [apiData, setApiData] = useState([])
   const [inventory, setInventory] = useState([]);
@@ -36,15 +31,6 @@ function App() {
   const displayCart = () => {
     alert("You have " + cartTotal + " items in your cart!")
   }
-
-  // const testInventory = [
-  //   {key: uuidv4(), title: "product1", image: testPic, price: 5.00, cardCount: 0},
-  //   {key: uuidv4(), title: "product2", image: testPic, price: 5.00, cardCount: 0},
-  //   {key: uuidv4(), title: "product3", image: testPic, price: 5.00, cardCount: 0},
-  //   {key: uuidv4(), title: "product4", image: testPic, price: 5.00, cardCount: 0},
-  //   {key: uuidv4(), title: "product5", image: testPic, price: 5.00, cardCount: 0},
-  //   {key: uuidv4(), title: "product6", image: testPic, price: 5.00, cardCount: 0},
-  // ]
 
   useEffect(() => {
     const getAPI = async () => {

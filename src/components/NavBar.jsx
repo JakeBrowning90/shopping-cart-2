@@ -7,7 +7,7 @@ function NavBar({cartTotal, displayCart}) {
         <>
             <header>
                 <nav>
-                    <h1>Logo</h1>
+                    <h1 aria-label="logo">Logo</h1>
                     <Link to="">Home</Link>
                     <Link to="/shop">Shop</Link>
                 </nav>
