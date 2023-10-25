@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
+import Logo from './img/bird.png';
 
 function NavBar({cartTotal, displayCart}) {
 
@@ -6,7 +7,7 @@ function NavBar({cartTotal, displayCart}) {
         <>
             <header>
                 <nav>
-                    <h1 aria-label="logo">Logo</h1>
+                    <img src={Logo} alt="bird logo" id="logo"/>
                     <Link to="">Home</Link>
                     <Link to="/shop">Shop</Link>
                 </nav>
