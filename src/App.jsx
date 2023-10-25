@@ -57,21 +57,10 @@ function App() {
     getAPI();
   }, [])
 
-  // const getAPI = async () => {
-  //   let response = await fetch('https://fakestoreapi.com/products?limit=10')
-  //   let data = await response.json();
-  //   // .then(res=>res.json())
-  //   // .then(json=>console.log(json))
-  //   setApiData(data);
-  // }
-
   const handleQtyChange = (e) => {
-    // console.log(e.target.dataset.key);
     const targetItem = inventory.find(item => item.key === e.target.dataset.key);
-    // console.log(targetItem);
     const value = parseFloat(e.target.value);
-    // console.log(value);
- 
+
     setInventory(inventory.map(item => {
       if (item.key === targetItem.key) {
         // Create a *new* object with changes
@@ -104,7 +93,10 @@ function App() {
   return (
     <>
       <RouterProvider router={router} cartTotal={cartTotal} addToCart={addToCart}/>
-      <footer>Made by Jake Browning for The Odin Project, 2023.</footer>
+      <footer>
+        <div>Made by Jake Browning for The Odin Project, 2023. | <a href="https://jakebrowning90.github.io/personal-portfolio/" target="_blank">Portfolio</a></div>
+        <div><a href='https://fakestoreapi.com/' target="_blank">Fake Store API</a> by MohammadReza Keikavousi</div>
+      </footer>
     </>
   )
 }
