@@ -11,6 +11,7 @@ import "./styles/styles.css"
 function App() {
   const [apiData, setApiData] = useState([])
   const [cartTotal, setCartTotal] = useState(0);
+  const [cartPrice, setCartPrice] = useState(0);
   const [inventory, setInventory] = useState([]);
 
   // Update item's cardCount to match value in input
@@ -31,6 +32,7 @@ function App() {
   // Update cartTotal with value from and reset input to zero
   const addToCart = (e) => {
       const targetItem = inventory.find(item => item.key === e.target.dataset.key);
+      setCartPrice(cartPrice => cartPrice + (targetItem.cardCount * targetItem.price))
       setCartTotal(cartTotal => cartTotal + targetItem.cardCount);
       // Refresh inventory with target object's cardCount set to zero
       setInventory(inventory.map(item => {
@@ -46,7 +48,7 @@ function App() {
 
   // Placeholder for Cart button functionality
   const displayCart = () => {
-    alert("You have " + cartTotal + " items in your cart!")
+    alert("You have " + cartTotal + " items in your cart, totaling $" + cartPrice + "!");
   }
 
   // Get store items for API on page mount, pass to inventory array with keys and cardCount
@@ -65,7 +67,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <NavBar cartTotal={cartTotal} displayCart={displayCart}/>,
+      element: <NavBar cartTotal={cartTotal} cartPrice={cartPrice} displayCart={displayCart}/>,
       errorElement: <PageError />,
       children: [
         {
