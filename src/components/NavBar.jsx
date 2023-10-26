@@ -9,15 +9,15 @@ function NavBar({cartTotal, cartPrice, displayCart}) {
             <header>
                 <nav>
                     <img src={Logo} alt="bird logo" className="headerIcon"/>
-                    <Link to="">Home</Link>
-                    <Link to="/shop">Shop</Link>
+                    <Link className="navLink" to="">Home</Link>
+                    <Link className="navLink" to="/shop">Shop</Link>
                 </nav>
-                <button onClick={displayCart}>
-                <img src={CartIcon} alt="cart icon" className="headerIcon"/>
-                <div>
-                    <div>{cartTotal} items</div>
-                   <div>${cartPrice.toFixed(2)}</div>
-                </div>
+                <button className="cartButton" onClick={displayCart}>
+                    <img src={CartIcon} alt="cart icon" className="headerIcon"/>
+                    <div>
+                        <div>{cartTotal} items</div>
+                        <div className="cartPrice">${cartPrice.toFixed(2)}</div>
+                    </div>
                 </button>
             </header>
             

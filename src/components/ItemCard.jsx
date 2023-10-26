@@ -5,6 +5,7 @@ function ItemCard({item, handleQtyChange, addToCart}) {
             <h2 className="itemName">{item.title}</h2>
             <h2 className="itemPrice">${item.price.toFixed(2)}</h2>
             <input 
+                className="cardInput"
                 name="cardCount" 
                 type="number" 
                 min="0"
