@@ -56,7 +56,7 @@ function App() {
     const getAPI = async () => {
       let response = await fetch('https://fakestoreapi.com/products?limit=20')
       let data = await response.json();
-      data.forEach((item, i) => {
+      data.forEach((item) => {
         setInventory((inventory) => [...inventory, {key: uuidv4(), title: item.title, image: item.image, price: item.price, cardCount: 0}])
       })
     }

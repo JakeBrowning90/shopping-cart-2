@@ -84,11 +84,18 @@ main {
     /* margin: 0 10px 0 10px; */
 }
 
-.greetingDiv {
+.featureDiv {
     color: white;
     background-color: rgb(98, 61, 231);
     height: 50%;
-    width: 50%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 3fr;
+}
+
+.featureTitle {
+    grid-column: 1 / -1;
 }
 
 .pageShop {
