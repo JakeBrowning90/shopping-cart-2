@@ -90,13 +90,27 @@ main {
     height: 50%;
     width: 80%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 3fr;
 }
 
 .featureTitle {
     grid-column: 1 / -1;
 }
+
+.featureList {
+    background-color: pink;
+    height: 100%;
+    width: 100%;
+}
+
+
+.featureCard {
+    background-color: green;
+    height: 100%;
+}
+
+
+
 
 .pageShop {
     background-color: var(--grey);

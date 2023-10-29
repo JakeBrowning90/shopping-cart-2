@@ -13,6 +13,7 @@ function App() {
   const [cartTotal, setCartTotal] = useState(0);
   const [cartPrice, setCartPrice] = useState(0);
   const [inventory, setInventory] = useState([]);
+  const [featured, setFeatured] = useState([]);
 
   // Update item's cardCount to match value in input
   const handleQtyChange = (e) => {
@@ -59,6 +60,12 @@ function App() {
       data.forEach((item) => {
         setInventory((inventory) => [...inventory, {key: uuidv4(), title: item.title, image: item.image, price: item.price, cardCount: 0}])
       })
+
+      data.slice(0, 3).forEach((item) => {
+        setFeatured((featured) => [...featured, {key: uuidv4(), title: item.title, image: item.image, price: item.price}])
+      })
+      // setFeatured((featured) => [...featured, inventory.slice(0, 3)]);
+
     }
     getAPI();
   }, [])
@@ -72,7 +79,7 @@ function App() {
       children: [
         {
           path:"", 
-          element: <PageHome />,
+          element: <PageHome featured={featured} />,
         },
         {
           path:"/shop", 
