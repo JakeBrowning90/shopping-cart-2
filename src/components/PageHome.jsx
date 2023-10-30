@@ -4,7 +4,7 @@ function PageHome({featured}) {
     return (
         <main className="pageHome">
             <div className="featureDiv">
-                <h1 className="featureTitle">Featured items:</h1>
+                <h1 className="featureTitle">FEATURED ITEMS:</h1>
                 {/* <FeatureCard item={featured[0]}/> */}
                 <ul className="featureList">
                 {featured.map((item) => {

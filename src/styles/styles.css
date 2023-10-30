@@ -77,39 +77,58 @@ main {
 }
 
 .pageHome {
-    background-color: rgb(200, 245, 255);
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin: 0 10px 0 10px; */
 }
 
 .featureDiv {
-    color: white;
-    background-color: rgb(98, 61, 231);
+    box-sizing: border-box;
     height: 50%;
     width: 80%;
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 5fr;
 }
 
 .featureTitle {
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 2em;
+    color: rgb(0, 0, 111);
     grid-column: 1 / -1;
 }
 
 .featureList {
-    background-color: pink;
+    box-sizing: border-box;
     height: 100%;
     width: 100%;
 }
 
-
 .featureCard {
-    background-color: green;
+    background-color: rgb(220, 228, 255);
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
     height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
 
+.featureImage {
+    justify-self: center;
+    margin: auto;
+    grid-column: 2 / -1;
+    grid-row: 1 / -1;
+    width: 90%;
+}
 
+.featureName, .featurePrice {
+    justify-self: center;
+    margin: auto;
+    font-weight: bold;
+}
 
 
 .pageShop {
